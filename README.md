@@ -11,4 +11,4 @@
 | DPL   | Discrete Optimization Problems   | 6/29 |
 | GRL   | Graph Algorithms                 | 2/18 |
 | CGL   | Computational Geometry           | 0/24 |
-| NTL   | Number Theory                    | 0/11 |
+| NTL   | Number Theory                    | 8/11 |
