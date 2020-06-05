@@ -2,7 +2,7 @@
 
 <https://onlinejudge.u-aizu.ac.jp/courses/list>
 
-| Title | Description                      | status   |
+| Title | Description                      | Score   |
 | :---- | :------------------------------- | -------- |
 | ITP1  | Introduction to Programming I    | 44/44 |
 | ALDS1 | Algorithms and Data Structures I | 24/57 |
