@@ -1,14 +1,12 @@
-# プログラムの基礎を学ぼう
-
-<https://onlinejudge.u-aizu.ac.jp/courses/list>
+# Aizu Online Judge
 
 | Title | Description                      | Score   |
 | :---- | :------------------------------- | -------- |
-| ITP1  | Introduction to Programming I    | 44/44 |
-| ALDS1 | Algorithms and Data Structures I | 24/57 |
-| ITP2  | Introduction to Programming II   | 0/44 |
-| DSL   | Data Sets and Queries            | 0/18 |
-| DPL   | Discrete Optimization Problems   | 6/29 |
-| GRL   | Graph Algorithms                 | 2/18 |
-| CGL   | Computational Geometry           | 0/24 |
-| NTL   | Number Theory                    | 8/11 |
+| [ITP1](https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all)  | Introduction to Programming I    | 44/44 |
+| [ALDS1](https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all) | Algorithms and Data Structures I | 24/57 |
+| [ITP2](https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/all)  | Introduction to Programming II   | 0/44 |
+| [DSL](https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all)   | Data Sets and Queries            | 0/18 |
+| [DPL](https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all)   | Discrete Optimization Problems   | 6/29 |
+| [GRL](https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all)   | Graph Algorithms                 | 2/18 |
+| [CGL](https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all)   | Computational Geometry           | 0/24 |
+| [NTL](https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/all)   | Number Theory                    | 8/11 |
