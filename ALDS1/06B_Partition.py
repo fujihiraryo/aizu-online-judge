@@ -10,7 +10,7 @@ def partition(A, l, r):
 
 
 n = int(input())
-*A, = map(int, input().split())
+(*A,) = map(int, input().split())
 r = str(A[-1])
 partition(A, 0, n)
 A = list(map(str, A))
@@ -18,7 +18,7 @@ B = []
 flg = True
 for a in A[::-1]:
     if a == r and flg:
-        b = '[{}]'.format(a)
+        b = "[{}]".format(a)
         flg = False
     else:
         b = a

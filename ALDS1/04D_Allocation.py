@@ -18,7 +18,7 @@ def ok(P):
 
 N, K = map(int, input().split())
 W = [int(input()) for _ in range(N)]
-l, r = 0, 10**10
+l, r = 0, 10 ** 10
 while r - l > 1:
     c = (l + r) // 2
     if ok(c):

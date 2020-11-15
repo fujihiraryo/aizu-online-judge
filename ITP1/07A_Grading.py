@@ -3,16 +3,16 @@ while True:
     if m == -1 and f == -1 and r == -1:
         exit()
     if m == -1 or f == -1:
-        print('F')
+        print("F")
     elif m + f >= 80:
-        print('A')
+        print("A")
     elif m + f >= 65:
-        print('B')
+        print("B")
     elif m + f >= 50:
-        print('C')
+        print("C")
     elif m + f >= 30 and r >= 50:
-        print('C')
+        print("C")
     elif m + f >= 30:
-        print('D')
+        print("D")
     else:
-        print('F')
+        print("F")

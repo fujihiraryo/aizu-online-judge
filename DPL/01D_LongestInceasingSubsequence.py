@@ -1,4 +1,5 @@
 import bisect
+
 n = int(input())
 A = [int(input()) for i in range(n)]
 # n = 5

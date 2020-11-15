@@ -2,7 +2,7 @@ n = int(input())
 parent = [-1 for i in range(n)]
 children = [[] for i in range(n)]
 for i in range(n):
-    *ipt, = map(int, input().split())
+    (*ipt,) = map(int, input().split())
     x = ipt[0]
     children[x] = ipt[2:]
     for c in children[x]:
@@ -19,6 +19,4 @@ for i in range(n):
         type = "internal node"
     else:
         type = "leaf"
-    print(
-        f"node {i}: parent = {parent[i]}, depth = {depth}, {type}, {children[i]}"
-    )
+    print(f"node {i}: parent = {parent[i]}, depth = {depth}, {type}, {children[i]}")

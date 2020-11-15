@@ -1,9 +1,9 @@
 S = input()
 left, right, area = [], [], []
 for i, s in enumerate(list(S)):
-    if s == '\\':
+    if s == "\\":
         left.append(i)
-    if s == '/' and left != []:
+    if s == "/" and left != []:
         j = left.pop()
         a = i - j
         while right != [] and j < right[-1]:

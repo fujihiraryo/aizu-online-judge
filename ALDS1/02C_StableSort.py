@@ -12,7 +12,7 @@ def bubble_sort(C, N):
 def selection_sort(C, N):
     for i in range(N):
         minj = i
-        for j in range(i+1, N):
+        for j in range(i + 1, N):
             if int(C[j][1]) < int(C[minj][1]):
                 minj = j
         C[i], C[minj] = C[minj], C[i]
@@ -20,7 +20,7 @@ def selection_sort(C, N):
 
 
 def to_dict(C):
-    dictionary = {n: [] for n in range(1, 36+1)}
+    dictionary = {n: [] for n in range(1, 36 + 1)}
     for card in C:
         m, i = tuple(card)
         dictionary[int(i)].append(m)
@@ -28,7 +28,7 @@ def to_dict(C):
 
 
 N = int(input())
-* C, = input().split()
+(*C,) = input().split()
 C_dict = to_dict(C)
 BC = bubble_sort(copy(C), N)
 BC_dict = to_dict(BC)
@@ -37,11 +37,11 @@ SC_dict = to_dict(SC)
 
 print(*BC)
 if C_dict == BC_dict:
-    print('Stable')
+    print("Stable")
 else:
-    print('Not Stable')
+    print("Not Stable")
 print(*SC)
 if C_dict == SC_dict:
-    print('Stable')
+    print("Stable")
 else:
-    print('Not stable')
+    print("Not stable")

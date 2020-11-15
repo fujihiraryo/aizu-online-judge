@@ -11,5 +11,5 @@ for n in range(N):
     B.append(m)
     C.append(M)
 C.reverse()
-D = [C[n+1] - B[n] for n in range(N-1)]
+D = [C[n + 1] - B[n] for n in range(N - 1)]
 print(max(D))

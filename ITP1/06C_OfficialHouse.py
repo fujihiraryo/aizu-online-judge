@@ -6,8 +6,8 @@ for i in range(n):
 for b in range(4):
     for f in range(3):
         A = map(str, H[b][f])
-        a = ' ' + ' '.join(A)
+        a = " " + " ".join(A)
         print(a)
     if b == 3:
         exit()
-    print('#' * 20)
+    print("#" * 20)

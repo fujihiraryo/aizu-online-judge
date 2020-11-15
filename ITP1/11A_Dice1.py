@@ -8,28 +8,48 @@ class Dice:
         self.bottom = x[5]
 
     def N(self):
-        self.top, self.front, self.bottom, self.back = self.front, self.bottom, self.back, self.top
+        self.top, self.front, self.bottom, self.back = (
+            self.front,
+            self.bottom,
+            self.back,
+            self.top,
+        )
 
     def E(self):
-        self.top, self.right, self.bottom, self.left = self.left, self.top, self.right, self.bottom
+        self.top, self.right, self.bottom, self.left = (
+            self.left,
+            self.top,
+            self.right,
+            self.bottom,
+        )
 
     def S(self):
-        self.top, self.front, self.bottom, self.back = self.back, self.top, self.front, self.bottom
+        self.top, self.front, self.bottom, self.back = (
+            self.back,
+            self.top,
+            self.front,
+            self.bottom,
+        )
 
     def W(self):
-        self.top, self.right, self.bottom, self.left = self.right, self.bottom, self.left, self.top
+        self.top, self.right, self.bottom, self.left = (
+            self.right,
+            self.bottom,
+            self.left,
+            self.top,
+        )
 
 
-*x, = map(int, input().split())
+(*x,) = map(int, input().split())
 dice = Dice(x)
 A = input()
 for a in A:
-    if a == 'N':
+    if a == "N":
         dice.N()
-    if a == 'E':
+    if a == "E":
         dice.E()
-    if a == 'S':
+    if a == "S":
         dice.S()
-    if a == 'W':
+    if a == "W":
         dice.W()
 print(dice.top)

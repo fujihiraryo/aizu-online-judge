@@ -1,4 +1,4 @@
-inf = 10**9 + 7
+inf = 10 ** 9 + 7
 
 
 def merge(A, left, mid, right):
@@ -30,7 +30,7 @@ def merge_sort(A, left, right):
 
 
 n = int(input())
-*A, = map(int, input().split())
+(*A,) = map(int, input().split())
 cnt = merge_sort(A, 0, n)
 print(*A)
 print(cnt)

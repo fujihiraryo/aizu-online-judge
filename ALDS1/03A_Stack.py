@@ -1,13 +1,13 @@
 def ope(a, x, y):
-    if a == '+':
-        return x+y
-    if a == '-':
-        return x-y
-    if a == '*':
-        return x*y
+    if a == "+":
+        return x + y
+    if a == "-":
+        return x - y
+    if a == "*":
+        return x * y
 
 
-*A, = input().split()
+(*A,) = input().split()
 stack = []
 for a in A:
     try:

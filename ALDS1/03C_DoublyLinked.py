@@ -1,5 +1,6 @@
-from collections import deque
 import sys
+from collections import deque
+
 input = sys.stdin.readline
 
 n = int(input())
@@ -11,15 +12,15 @@ for i in range(n):
         x = inp[1]
     except:
         pass
-    if op == 'insert':
+    if op == "insert":
         lst.appendleft(x)
-    if op == 'delete':
+    if op == "delete":
         try:
             lst.remove(x)
         except:
             pass
-    if op == 'deleteFirst':
+    if op == "deleteFirst":
         lst.popleft()
-    if op == 'deleteLast':
+    if op == "deleteLast":
         lst.pop()
 print(*lst)

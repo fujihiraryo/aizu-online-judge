@@ -16,6 +16,6 @@ def counting_sort(A):
 
 
 n = int(input())
-*A, = map(int, input().split())
+(*A,) = map(int, input().split())
 B = counting_sort(A)
 print(*B)

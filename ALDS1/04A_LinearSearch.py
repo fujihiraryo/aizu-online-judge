@@ -1,5 +1,5 @@
 n = int(input())
-*S, = map(int, input().split())
+(*S,) = map(int, input().split())
 q = int(input())
-*T, = map(int, input().split())
+(*T,) = map(int, input().split())
 print(len(set(S) & set(T)))

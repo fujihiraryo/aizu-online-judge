@@ -33,7 +33,7 @@ def cyclic_factorize(A):
 
 
 N = int(input())
-*W, = map(int, input().split())
+(*W,) = map(int, input().split())
 cycle_lst = cyclic_factorize(W)
 ans = 0
 global_min = min(W)

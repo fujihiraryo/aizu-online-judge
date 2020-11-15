@@ -1,6 +1,6 @@
 while True:
     w = input()
-    if w == '-':
+    if w == "-":
         exit()
     m = int(input())
     for i in range(m):

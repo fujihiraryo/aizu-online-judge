@@ -1,13 +1,13 @@
 while True:
     a, op, b = input().split()
     a, b = int(a), int(b)
-    if op == '?':
+    if op == "?":
         exit()
-    if op == '+':
+    if op == "+":
         print(a + b)
-    if op == '-':
+    if op == "-":
         print(a - b)
-    if op == '*':
+    if op == "*":
         print(a * b)
-    if op == '/':
+    if op == "/":
         print(a // b)

@@ -1,5 +1,5 @@
 N = int(input())
-*A, = map(int, input().split())
+(*A,) = map(int, input().split())
 ok = False
 count = 0
 while not ok:

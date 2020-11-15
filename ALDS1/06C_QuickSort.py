@@ -33,8 +33,8 @@ for a in A:
 for a in A:
     dct1[a[1]].append(a[0])
 if dct0 == dct1:
-    print('Stable')
+    print("Stable")
 else:
-    print('Not stable')
+    print("Not stable")
 for a in A:
     print(*a)
