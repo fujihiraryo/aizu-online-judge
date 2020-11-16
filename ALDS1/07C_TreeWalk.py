@@ -9,12 +9,12 @@ for i in range(n):
     parent[y] = a
 
 
-def walk(root, type):
+def walk(root, t):
     if root == -1:
         return []
-    elif type == 0:
+    elif t == 0:
         return [root] + walk(left[root], 0) + walk(right[root], 0)
-    elif type == 1:
+    elif t == 1:
         return walk(left[root], 1) + [root] + walk(right[root], 1)
     else:
         return walk(left[root], 2) + walk(right[root], 2) + [root]

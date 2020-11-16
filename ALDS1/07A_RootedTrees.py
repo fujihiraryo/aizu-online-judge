@@ -8,15 +8,17 @@ for i in range(n):
     for c in children[x]:
         parent[c] = x
 for i in range(n):
-    depth = 0
+    d = 0
     tmp = i
     while parent[tmp] != -1:
-        depth += 1
+        d += 1
         tmp = parent[tmp]
-    if depth == 0:
-        type = "root"
+    if d == 0:
+        t = "root"
     elif children[i] != []:
-        type = "internal node"
+        t = "internal node"
     else:
-        type = "leaf"
-    print(f"node {i}: parent = {parent[i]}, depth = {depth}, {type}, {children[i]}")
+        t = "leaf"
+    p = parent[i]
+    c = children[i]
+    print(f"node {i}: parent = {p}, depth = {d}, {t}, {c}")

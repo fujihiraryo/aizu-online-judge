@@ -25,11 +25,17 @@ for i in range(n):
 
 for i in range(n):
     if depth[i] == 0:
-        type = "root"
+        t = "root"
     elif degree[i] != 0:
-        type = "internal node"
+        t = "internal node"
     else:
-        type = "leaf"
+        t = "leaf"
+    p = parent[i]
+    b = brother[i]
+    dg = degree[i]
+    dp = depth[i]
+    h = height[i]
     print(
-        f"node {i}: parent = {parent[i]}, sibling = {brother[i]}, degree = {degree[i]}, depth = {depth[i]}, height = {height[i]}, {type}"
+        f"node {i}: parent = {p}, sibling = {b}, "
+        + f"degree = {dg}, depth = {dp}, height = {h}, {t}"
     )
