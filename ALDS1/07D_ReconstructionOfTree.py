@@ -10,11 +10,11 @@ def step(i, j):
     if i >= j:
         return
     a = next(A)
-    k = B[a]
-    step(i, k)
-    step(k + 1, j)
-    C.append(a)
+    for x in step(i, B[a]):
+        yield x
+    for x in step(B[a] + 1, j):
+        yield x
+    yield a
 
 
-step(0, n)
-print(*map(lambda x: x + 1, C))
+print(*map(lambda x: x + 1, step(0, n)))

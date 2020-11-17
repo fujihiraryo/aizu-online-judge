@@ -11,13 +11,25 @@ for i in range(n):
 
 def walk(root, t):
     if root == -1:
-        return []
+        return
     elif t == 0:
-        return [root] + walk(left[root], 0) + walk(right[root], 0)
+        yield root
+        for x in walk(left[root], 0):
+            yield x
+        for x in walk(right[root], 0):
+            yield x
     elif t == 1:
-        return walk(left[root], 1) + [root] + walk(right[root], 1)
+        for x in walk(left[root], 1):
+            yield x
+        yield root
+        for x in walk(right[root], 1):
+            yield x
     else:
-        return walk(left[root], 2) + walk(right[root], 2) + [root]
+        for x in walk(left[root], 2):
+            yield x
+        for x in walk(right[root], 2):
+            yield x
+        yield root
 
 
 root = 0
