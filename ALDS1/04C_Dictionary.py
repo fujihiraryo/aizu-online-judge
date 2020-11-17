@@ -8,5 +8,5 @@ for op, s in lst:
         try:
             if dict[s] == 1:
                 print("yes")
-        except:
+        except KeyError:
             print("no")

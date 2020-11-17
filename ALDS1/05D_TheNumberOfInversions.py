@@ -21,11 +21,12 @@ def merged(L, R):
 
 
 def merge_sorted(A):
-    l = len(A)
-    if l == 1:
+    lenA = len(A)
+    if lenA == 1:
         return A, 0
-    L, cntL = merge_sorted(A[: l // 2])
-    R, cntR = merge_sorted(A[l // 2 :])
+    half = lenA // 2
+    L, cntL = merge_sorted(A[:half])
+    R, cntR = merge_sorted(A[half:])
     A, cnt = merged(L, R)
     return A, cntL + cntR + cnt
 

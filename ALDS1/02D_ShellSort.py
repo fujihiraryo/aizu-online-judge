@@ -17,7 +17,7 @@ def insertion_sort(A_, n, g, cnt):
 def shell_sort(A_, n):
     A = copy.copy(A_)
     cnt = 0
-    G = [(3 ** i - 1) // 2 for i in reversed(range(1, 14)) if (3 ** i - 1) // 2 <= n]
+    G = [(3 ** i - 1) // 2 for i in range(13, 0, -1) if (3 ** i - 1) // 2 <= n]
     m = len(G)
     for i in range(m):
         A, cnt = insertion_sort(A, n, G[i], cnt)

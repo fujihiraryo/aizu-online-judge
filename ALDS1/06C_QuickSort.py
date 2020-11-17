@@ -1,19 +1,19 @@
-def partition(A, l, r):
-    x = A[r - 1]
-    i = l - 1
-    for j in range(l, r - 1):
+def partition(A, a, b):
+    x = A[b - 1]
+    i = a - 1
+    for j in range(a, b - 1):
         if A[j][1] <= x[1]:
             i += 1
             A[i], A[j] = A[j], A[i]
-    A[i + 1], A[r - 1] = A[r - 1], A[i + 1]
+    A[i + 1], A[b - 1] = A[b - 1], A[i + 1]
     return i + 1
 
 
-def quick_sort(A, l, r):
-    if r - l > 1:
-        q = partition(A, l, r)
-        quick_sort(A, l, q)
-        quick_sort(A, q, r)
+def quick_sort(A, a, b):
+    if b - a > 1:
+        q = partition(A, a, b)
+        quick_sort(A, a, q)
+        quick_sort(A, q, b)
 
 
 n = int(input())

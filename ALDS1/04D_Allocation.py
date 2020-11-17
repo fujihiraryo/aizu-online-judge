@@ -18,11 +18,11 @@ def ok(P):
 
 N, K = map(int, input().split())
 W = [int(input()) for _ in range(N)]
-l, r = 0, 10 ** 10
-while r - l > 1:
-    c = (l + r) // 2
+a, b = 0, 10 ** 10
+while b - a > 1:
+    c = (a + b) // 2
     if ok(c):
-        r = c
+        b = c
     else:
-        l = c
-print(r)
+        a = c
+print(b)

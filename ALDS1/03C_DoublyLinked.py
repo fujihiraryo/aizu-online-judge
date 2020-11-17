@@ -10,14 +10,14 @@ for i in range(n):
     op = inp[0]
     try:
         x = inp[1]
-    except:
+    except KeyError:
         pass
     if op == "insert":
         lst.appendleft(x)
     if op == "delete":
         try:
             lst.remove(x)
-        except:
+        except ValueError:
             pass
     if op == "deleteFirst":
         lst.popleft()

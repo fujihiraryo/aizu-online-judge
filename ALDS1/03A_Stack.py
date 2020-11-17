@@ -13,7 +13,7 @@ for a in A:
     try:
         a = int(a)
         stack.append(a)
-    except:
+    except ValueError:
         tmp = stack.pop()
         tmp = ope(a, stack.pop(), tmp)
         stack.append(tmp)

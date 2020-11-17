@@ -38,8 +38,8 @@ cycle_lst = cyclic_factorize(W)
 ans = 0
 global_min = min(W)
 for cycle in cycle_lst:
-    l = len(cycle)
+    n = len(cycle)
     s = sum(cycle)
     local_min = min(cycle)
-    ans += s + min((l - 2) * local_min, local_min + (l + 1) * global_min)
+    ans += s + min((n - 2) * local_min, local_min + (n + 1) * global_min)
 print(ans)

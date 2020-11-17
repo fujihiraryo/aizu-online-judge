@@ -1,11 +1,11 @@
-def partition(A, l, r):
-    x = A[r - 1]
-    i = l - 1
-    for j in range(l, r - 1):
+def partition(A, a, b):
+    x = A[b - 1]
+    i = a - 1
+    for j in range(a, b - 1):
         if A[j] <= x:
             i += 1
             A[i], A[j] = A[j], A[i]
-    A[i + 1], A[r - 1] = A[r - 1], A[i + 1]
+    A[i + 1], A[b - 1] = A[b - 1], A[i + 1]
     return i + 1
 
 

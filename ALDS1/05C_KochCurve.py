@@ -20,9 +20,9 @@ n = int(input())
 for i in range(n):
     L = len(lst)
     new_lst = []
-    for l in range(L - 1):
-        left = lst[l]
-        right = lst[l + 1]
+    for x in range(L - 1):
+        left = lst[x]
+        right = lst[x + 1]
         new_lst.append(left)
         s, t = split3(left, right)
         u = rotate60(s, t)
