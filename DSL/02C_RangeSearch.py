@@ -1,3 +1,8 @@
+import sys
+
+input = sys.stdin.readline
+
+
 def lower_bound(a, x, key=lambda i: i):
     n = len(a)
     i, j = -1, n
@@ -59,30 +64,34 @@ class RangeSearch:
         jx += self.size
         while ix < jx:
             if ix & 1:
-                iy = lower_bound(self.tree[ix], sy, key=lambda i: y[i])
-                jy = upper_bound(self.tree[ix], ty, key=lambda i: y[i])
+                iy = lower_bound(self.tree[ix], sy, key=lambda i: self.y[i])
+                jy = upper_bound(self.tree[ix], ty, key=lambda i: self.y[i])
                 for k in range(iy, jy):
                     yield self.tree[ix][k]
                 ix += 1
             if jx & 1:
-                iy = lower_bound(self.tree[jx - 1], sy, key=lambda i: y[i])
-                jy = upper_bound(self.tree[jx - 1], ty, key=lambda i: y[i])
+                iy = lower_bound(self.tree[jx - 1], sy, key=lambda i: self.y[i])
+                jy = upper_bound(self.tree[jx - 1], ty, key=lambda i: self.y[i])
                 for k in range(iy, jy):
                     yield self.tree[jx - 1][k]
             ix >>= 1
             jx >>= 1
 
 
-n = int(input())
-x, y = [], []
-for _ in range(n):
-    xi, yi = map(int, input().split())
-    x.append(xi)
-    y.append(yi)
-rs = RangeSearch(x, y)
-q = int(input())
-for _ in range(q):
-    sx, tx, sy, ty = map(int, input().split())
-    for i in sorted(rs.query(sx, tx, sy, ty)):
-        print(i)
-    print()
+def main():
+    n = int(input())
+    x, y = [], []
+    for _ in range(n):
+        xi, yi = map(int, input().split())
+        x.append(xi)
+        y.append(yi)
+    rs = RangeSearch(x, y)
+    q = int(input())
+    for _ in range(q):
+        sx, tx, sy, ty = map(int, input().split())
+        for i in sorted(rs.query(sx, tx, sy, ty)):
+            print(i)
+        print()
+
+
+main()
