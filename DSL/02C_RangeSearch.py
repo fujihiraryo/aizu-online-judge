@@ -1,54 +1,40 @@
-def lower_bound(a, x, key=lambda i: i):
-    n = len(a)
-    i, j = -1, n
-    while j - i > 1:
-        k = (i + j) // 2
-        if x <= key(a[k]):
-            j = k
-        else:
-            i = k
-    return j
+import bisect
+import sys
 
-
-def upper_bound(a, x, key=lambda i: i):
-    n = len(a)
-    i, j = -1, n
-    while j - i > 1:
-        k = (i + j) // 2
-        if x < key(a[k]):
-            j = k
-        else:
-            i = k
-    return j
+lower_bound = bisect.bisect_left
+upper_bound = bisect.bisect_right
+input = sys.stdin.readline
 
 
 class RangeSearch:
     def __init__(self, x, y):
-        key_x = lambda i: x[i]
-        key_y = lambda i: y[i]
         n = len(x)
         d = 1
         while d ** 2 < n:
             d += 1
         array = list(range(n))
-        array.sort(key=key_x)
+        array.sort(key=lambda i: x[i])
+        sorted_x = sorted(x)
         bucket = [[] for _ in range(d)]
+        sorted_y = [[] for _ in range(d)]
         for i in range(n):
             bucket[i // d].append(array[i])
+            sorted_y[i // d].append(y[array[i]])
         for i in range(d):
-            bucket[i].sort(key=key_y)
+            bucket[i].sort(key=lambda i: y[i])
+            sorted_y[i].sort()
         self.size = d
         self.x = x
         self.y = y
-        self.key_x = key_x
-        self.key_y = key_y
+        self.sorted_x = sorted_x
+        self.sorted_y = sorted_y
         self.array = array
         self.bucket = bucket
 
     def query(self, sx, tx, sy, ty):
         d = self.size
-        ix = lower_bound(self.array, sx, key=self.key_x)
-        jx = upper_bound(self.array, tx, key=self.key_x)
+        ix = lower_bound(self.sorted_x, sx)
+        jx = upper_bound(self.sorted_x, tx)
         if ix // d == jx // d:
             for k in self.array[ix:jx]:
                 if sy <= self.y[k] <= ty:
@@ -57,10 +43,10 @@ class RangeSearch:
         for k in self.array[ix : (ix // d + 1) * d]:
             if sy <= self.y[k] <= ty:
                 yield k
-        for bucket in self.bucket[ix // d + 1 : jx // d]:
-            iy = lower_bound(bucket, sy, key=self.key_y)
-            jy = upper_bound(bucket, ty, key=self.key_y)
-            for k in bucket[iy:jy]:
+        for i in range(ix // d + 1, jx // d):
+            iy = lower_bound(self.sorted_y[i], sy)
+            jy = upper_bound(self.sorted_y[i], ty)
+            for k in self.bucket[i][iy:jy]:
                 yield k
         for k in self.array[(jx // d) * d : jx]:
             if sy <= self.y[k] <= ty:
