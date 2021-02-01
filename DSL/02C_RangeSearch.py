@@ -10,17 +10,17 @@ class RangeSearch:
     def __init__(self, x, y):
         n = len(x)
         d = 1
-        while d ** 2 < n:
+        while d ** 2 < n * n.bit_length():
             d += 1
         array = list(range(n))
         array.sort(key=lambda i: x[i])
         sorted_x = sorted(x)
-        bucket = [[] for _ in range(d)]
-        sorted_y = [[] for _ in range(d)]
+        bucket = [[] for _ in range(-(-n // d))]
+        sorted_y = [[] for _ in range(-(-n // d))]
         for i in range(n):
             bucket[i // d].append(array[i])
             sorted_y[i // d].append(y[array[i]])
-        for i in range(d):
+        for i in range(-(-n // d)):
             bucket[i].sort(key=lambda i: y[i])
             sorted_y[i].sort()
         self.size = d
@@ -60,10 +60,16 @@ def main():
         xi, yi = map(int, input().split())
         x.append(xi)
         y.append(yi)
+    width = max(x) - min(x)
+    height = max(y) - min(y)
+    if width < height:
+        x, y = y, x
     rs = RangeSearch(x, y)
     q = int(input())
     for _ in range(q):
         sx, tx, sy, ty = map(int, input().split())
+        if width < height:
+            sx, tx, sy, ty = sy, ty, sx, tx
         for i in sorted(rs.query(sx, tx, sy, ty)):
             print(i)
         print()
