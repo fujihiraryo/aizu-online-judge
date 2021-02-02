@@ -1,5 +1,8 @@
 import bisect
 
+lower_bound = bisect.bisect_left
+upper_bound = bisect.bisect_right
+
 
 class RangeSearch:
     def __init__(self, x, y):
@@ -8,40 +11,32 @@ class RangeSearch:
         while d ** 2 < n:
             d += 1
         idx = sorted(range(n), key=lambda i: x[i])
-        sorted_x = sorted(x)
-        sorted_y = [[] for _ in range(d)]
         bucket = [[] for _ in range(d)]
-        for i in range(n):
-            sorted_y[i // d].append(y[idx[i]])
-            bucket[i // d].append(idx[i])
+        for i, k in enumerate(idx):
+            bucket[i // d].append(k)
         for i in range(d):
-            sorted_y[i].sort()
             bucket[i].sort(key=lambda i: y[i])
+        self.size = d
+        self.bucket = bucket
         self.x = x
         self.y = y
-        self.sorted_x = sorted_x
-        self.sorted_y = sorted_y
-        self.bucket = bucket
-        self.bucket_count = d
+        self.sorted_x = [x[k] for k in idx]
+        self.sorted_y = [[y[k] for k in bucket[i]] for i in range(d)]
 
     def query(self, sx, tx, sy, ty):
-        d = self.bucket_count
-        ix = bisect.bisect_left(self.sorted_x[d - 1 :: d], sx)
-        jx = bisect.bisect_right(self.sorted_x[0::d], tx)
+        d = self.size
+        ix = lower_bound(self.sorted_x[d - 1 :: d], sx)
+        jx = upper_bound(self.sorted_x[0::d], tx)
         for i in range(ix, jx):
-            iy = bisect.bisect_left(self.sorted_y[i], sy)
-            jy = bisect.bisect_right(self.sorted_y[i], ty)
+            iy = lower_bound(self.sorted_y[i], sy)
+            jy = upper_bound(self.sorted_y[i], ty)
             for k in self.bucket[i][iy:jy]:
                 if sx <= self.x[k] <= tx and sy <= self.y[k] <= ty:
                     yield k
 
 
 n = int(input())
-x, y = [], []
-for _ in range(n):
-    xi, yi = map(int, input().split())
-    x.append(xi)
-    y.append(yi)
+x, y = zip(*[map(int, input().split()) for _ in range(n)])
 rs = RangeSearch(x, y)
 q = int(input())
 for _ in range(q):
