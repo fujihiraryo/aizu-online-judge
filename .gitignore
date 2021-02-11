@@ -2,3 +2,4 @@ tempCodeRunnerFile.py
 *sample*
 *.txt
 .vscode/*
+.DS_Store
