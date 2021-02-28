@@ -1,40 +1,41 @@
-def maximum_flow(graph, start, goal):
-    INF = 1 << 30
+def max_flow(graph, start, goal, INF=1 << 30):
     n = len(graph)
-    max_flow = 0
+    flow = 0
     while True:
-        # find path
-        visited = [0] * n
-        stack = [start]
-        last = [None] * n
-        while stack:
-            x = stack.pop()
-            visited[x] = 1
-            if x == goal:
-                break
-            for y in graph[x].keys():
-                if visited[y] or graph[x][y] == 0:
+        # bfs
+        dist = [INF] * n
+        dist[start] = 0
+        queue = [start]
+        for x in queue:
+            for y in graph[x]:
+                if graph[x][y] == 0 or dist[y] < INF:
                     continue
-                stack.append(y)
-                last[y] = x
-        if x != goal:
+                dist[y] = dist[x] + 1
+                queue.append(y)
+        if dist[goal] == INF:
             break
-        # min capacity
-        y = goal
-        min_capacity = INF
-        while last[y] is not None:
-            x = last[y]
-            min_capacity = min(min_capacity, graph[x][y])
-            y = x
-        # update graph
-        y = goal
-        while last[y] is not None:
-            x = last[y]
-            graph[x][y] -= min_capacity
-            graph[y][x] += min_capacity
-            y = x
-        max_flow += min_capacity
-    return max_flow
+        # dfs
+        checked = [[0] * n for _ in range(n)]
+        f = INF
+        while f:
+            f = dfs(graph, dist, checked, start, goal, INF)
+            flow += f
+    return flow
+
+
+def dfs(graph, dist, checked, x, goal, flow):
+    if x == goal:
+        return flow
+    for y in graph[x]:
+        if graph[x][y] == 0 or dist[x] >= dist[y] or checked[x][y]:
+            continue
+        checked[x][y] = 1
+        f = dfs(graph, dist, checked, y, goal, min(flow, graph[x][y]))
+        if f:
+            graph[x][y] -= f
+            graph[y][x] += f
+            return f
+    return 0
 
 
 n, m = map(int, input().split())
@@ -43,4 +44,4 @@ for _ in range(m):
     a, b, c = map(int, input().split())
     graph[a][b] = c
     graph[b][a] = 0
-print(maximum_flow(graph, 0, n - 1))
+print(max_flow(graph, 0, n - 1))
