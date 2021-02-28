@@ -23,9 +23,9 @@ class Dinic:
             return flow
         for y in self.graph[x]:
             capa = self.graph[x][y]
-            if capa == 0 or self.dist[x] >= self.dist[y] or self.checked[x][y]:
+            if capa == 0 or self.dist[x] >= self.dist[y] or y in self.checked[x]:
                 continue
-            self.checked[x][y] = 1
+            self.checked[x].add(y)
             f = self.dfs(y, min(flow, capa))
             if f:
                 self.graph[x][y] -= f
@@ -40,7 +40,7 @@ class Dinic:
             if self.dist[self.goal] == self.INF:
                 return res
             flow = self.INF
-            self.checked = [[0] * self.size for _ in range(self.size)]
+            self.checked = [set() for _ in range(self.size)]
             while flow:
                 flow = self.dfs(self.start, self.INF)
                 res += flow
