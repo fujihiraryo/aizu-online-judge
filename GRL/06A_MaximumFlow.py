@@ -1,41 +1,49 @@
-def max_flow(graph, start, goal, INF=1 << 30):
-    n = len(graph)
-    flow = 0
-    while True:
-        # bfs
-        dist = [INF] * n
-        dist[start] = 0
-        queue = [start]
+class Dinic:
+    def __init__(self, graph, start, goal, INF=1 << 30):
+        n = len(graph)
+        self.size = n
+        self.graph = graph
+        self.start = start
+        self.goal = goal
+        self.INF = INF
+
+    def bfs(self):
+        self.dist = [self.INF] * self.size
+        self.dist[self.start] = 0
+        queue = [self.start]
         for x in queue:
-            for y in graph[x]:
-                if graph[x][y] == 0 or dist[y] < INF:
+            for y in self.graph[x]:
+                if self.graph[x][y] == 0 or self.dist[y] < self.INF:
                     continue
-                dist[y] = dist[x] + 1
+                self.dist[y] = self.dist[x] + 1
                 queue.append(y)
-        if dist[goal] == INF:
-            break
-        # dfs
-        checked = [[0] * n for _ in range(n)]
-        f = INF
-        while f:
-            f = dfs(graph, dist, checked, start, goal, INF)
-            flow += f
-    return flow
 
+    def dfs(self, x, flow):
+        if x == self.goal:
+            return flow
+        for y in self.graph[x]:
+            capa = self.graph[x][y]
+            if capa == 0 or self.dist[x] >= self.dist[y] or self.checked[x][y]:
+                continue
+            self.checked[x][y] = 1
+            f = self.dfs(y, min(flow, capa))
+            if f:
+                self.graph[x][y] -= f
+                self.graph[y][x] += f
+                return f
+        return 0
 
-def dfs(graph, dist, checked, x, goal, flow):
-    if x == goal:
-        return flow
-    for y in graph[x]:
-        if graph[x][y] == 0 or dist[x] >= dist[y] or checked[x][y]:
-            continue
-        checked[x][y] = 1
-        f = dfs(graph, dist, checked, y, goal, min(flow, graph[x][y]))
-        if f:
-            graph[x][y] -= f
-            graph[y][x] += f
-            return f
-    return 0
+    def max_flow(self):
+        res = 0
+        while True:
+            self.bfs()
+            if self.dist[self.goal] == self.INF:
+                return res
+            flow = self.INF
+            self.checked = [[0] * self.size for _ in range(self.size)]
+            while flow:
+                flow = self.dfs(self.start, self.INF)
+                res += flow
 
 
 n, m = map(int, input().split())
@@ -44,4 +52,4 @@ for _ in range(m):
     a, b, c = map(int, input().split())
     graph[a][b] = c
     graph[b][a] = 0
-print(max_flow(graph, 0, n - 1))
+print(Dinic(graph, 0, n - 1).max_flow())
