@@ -3,3 +3,4 @@ tempCodeRunnerFile.py
 *.txt
 .vscode/*
 .DS_Store
+.python-version
