@@ -4,9 +4,15 @@ struct Point {
     int x, y;
 };
 
-Point operator-(Point p, Point q) { return Point{p.x - q.x, p.y - q.y}; }
-int operator,(Point p, Point q) { return p.x * q.x + p.y * q.y; }
-int operator^(Point p, Point q) { return p.x * q.y - p.y * q.x; }
+Point operator-(Point p, Point q) {
+    return Point{p.x - q.x, p.y - q.y};
+}
+int operator,(Point p, Point q) {
+    return p.x * q.x + p.y * q.y;
+}
+int operator^(Point p, Point q) {
+    return p.x * q.y - p.y * q.x;
+}
 int ccw(Point p0, Point p1, Point p2) {
     int cross = (p1 - p0) ^ (p2 - p0);
     int dot = (p1 - p0, p2 - p0);

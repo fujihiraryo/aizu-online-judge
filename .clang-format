@@ -1,4 +1,5 @@
-Language: Cpp
+---
+Language:        Cpp
 BasedOnStyle: Google
 SortIncludes: false
 AccessModifierOffset: -4
@@ -11,10 +12,10 @@ AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
 AlwaysBreakTemplateDeclarations: false
-ColumnLimit: 256
+ColumnLimit:     256
 IndentCaseLabels: false
 MaxEmptyLinesToKeep: 1
 Cpp11BracedListStyle: true
-Standard: Cpp11
-IndentWidth: 4
-UseTab: Never
+Standard:        Cpp11
+IndentWidth:     4
+UseTab:          Never

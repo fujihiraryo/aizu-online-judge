@@ -5,11 +5,21 @@ struct Point {
     double x, y;
 };
 
-Point operator+(Point p, Point q) { return Point{p.x + q.x, p.y + q.y}; }
-Point operator-(Point p, Point q) { return Point{p.x - q.x, p.y - q.y}; }
-Point operator/(Point p, double a) { return Point{p.x / a, p.y / a}; }
-double operator,(Point p, Point q) { return p.x * q.x + p.y * q.y; }
-double operator^(Point p, Point q) { return p.x * q.y - p.y * q.x; }
+Point operator+(Point p, Point q) {
+    return Point{p.x + q.x, p.y + q.y};
+}
+Point operator-(Point p, Point q) {
+    return Point{p.x - q.x, p.y - q.y};
+}
+Point operator/(Point p, double a) {
+    return Point{p.x / a, p.y / a};
+}
+double operator,(Point p, Point q) {
+    return p.x * q.x + p.y * q.y;
+}
+double operator^(Point p, Point q) {
+    return p.x * q.y - p.y * q.x;
+}
 int ccw(Point p0, Point p1, Point p2) {
     double cross = (p1 - p0) ^ (p2 - p0);
     if (cross > 0) {
@@ -50,10 +60,8 @@ Point findCross(Point p0, Point p1, Point p2, Point p3) {
 Point findCross2(Point p0, Point p1, Point p2, Point p3) {
     double det = (p0.x - p1.x) * (p2.y - p3.y) - (p0.y - p1.y) * (p2.x - p3.x);
     Point p;
-    p.x = -(p2.x - p3.x) * (p1.x * p0.y - p0.x * p1.y) +
-          (p0.x - p1.x) * (p3.x * p2.y - p2.x * p3.y);
-    p.y = -(p2.y - p3.y) * (p1.x * p0.y - p0.x * p1.y) +
-          (p0.y - p1.y) * (p3.x * p2.y - p2.x * p3.y);
+    p.x = -(p2.x - p3.x) * (p1.x * p0.y - p0.x * p1.y) + (p0.x - p1.x) * (p3.x * p2.y - p2.x * p3.y);
+    p.y = -(p2.y - p3.y) * (p1.x * p0.y - p0.x * p1.y) + (p0.y - p1.y) * (p3.x * p2.y - p2.x * p3.y);
     return p / det;
 }
 
