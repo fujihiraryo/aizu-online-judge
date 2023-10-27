@@ -2,6 +2,7 @@ tempCodeRunnerFile.py
 *sample*
 *.txt
 a.out
+*.exe
 .vscode/*
 .DS_Store
 .python-version
