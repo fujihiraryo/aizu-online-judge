@@ -1,27 +1,23 @@
-class Heap:
-    def __init__(self, a) -> None:
-        self.data = []
-        for x in a:
-            self.data.append(x)
-        self.max = None
-        for i in range(len(self.data) // 2)[::-1]:
-            self.__heapify(self.data, i)
+def sub_heapify(a, i):
+    n = len(a)
+    j = i
+    if 2 * i + 1 < n and a[2 * i + 1] > a[j]:
+        j = 2 * i + 1
+    if 2 * i + 2 < n and a[2 * i + 2] > a[j]:
+        j = 2 * i + 2
+    if i != j:
+        a[i], a[j] = a[j], a[i]
+        sub_heapify(a, j)
 
-    def __heapify(self, a, i):
-        n = len(a)
-        if i * 2 + 1 < n and a[i * 2 + 1] > a[i]:
-            self.max = i * 2 + 1
-        else:
-            self.max = i
-        if i * 2 + 2 < n and a[i * 2 + 2] > a[self.max]:
-            self.max = i * 2 + 2
-        if self.max != i:
-            a[i], a[self.max] = a[self.max], a[i]
-            self.__heapify(a, self.max)
+
+def heapify(a):
+    n = len(a)
+    for i in range(n)[::-1]:
+        sub_heapify(a, i)
 
 
 n = int(input())
 (*a,) = map(int, input().split())
-heap = Heap(a)
+heapify(a)
 print(" ", end="")
-print(*heap.data)
+print(*a)
