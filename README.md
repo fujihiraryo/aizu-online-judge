@@ -2,7 +2,7 @@
 
 | Problem | Score | Code |
 |---|---|---|
-| [Algorithms and Data Structures I](https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all) | 47/58 | [ALDS1](ALDS1) |
+| [Algorithms and Data Structures I](https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all) | 57/58 | [ALDS1](ALDS1) |
 | [Computational Geometry](https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all) | 24/24 | [CGL](CGL) |
 | [Discrete Optimization](https://onlinejudge.u-aizu.ac.jp/courses/library/7/DPL/all) | 28/29 | [DPL](DPL) |
 | [Data Sets and Queries](https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/all) | 18/18 | [DSL](DSL) |
