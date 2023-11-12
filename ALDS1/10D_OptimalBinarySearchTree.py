@@ -10,11 +10,11 @@ for i in range(1, n + 1):
 
 
 def sm(i, j):
-    # 区間[i:j]で探索が終わる確率
+    # [i:j]で探索が終わる確率
     return s[j] - s[i] - p[i]
 
 
-# dp[i][j] = q[i:j]で作る最小コスト
+# dp[i][j] = [i:j]で作る最小コスト
 dp = [[INF] * (n + 1) for i in range(n)]
 
 
