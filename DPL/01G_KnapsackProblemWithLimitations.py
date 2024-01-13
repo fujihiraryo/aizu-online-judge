@@ -20,22 +20,16 @@ def slide_max(a, k):
 
 
 n, m = map(int, input().split())
-v, w, c = [], [], []
-for _ in range(n):
-    vi, wi, ci = map(int, input().split())
-    v.append(vi)
-    w.append(wi)
-    c.append(ci)
-dp = [[0] * (m + 1) for _ in range(n + 1)]
-for i in range(1, n + 1):
-    table = [[] for _ in range(w[i - 1])]
-    for j in range(m + 1)[::-1]:
-        r = (m - j) % w[i - 1]
-        x = (m - j) // w[i - 1]
-        table[r].append(dp[i - 1][j] + x * v[i - 1])
-    sm = [slide_max(table[r], c[i - 1] + 1) for r in range(w[i - 1])]
-    for j in range(m + 1):
-        r = (m - j) % w[i - 1]
-        x = (m - j) // w[i - 1]
-        dp[i][j] = sm[r][x] - x * v[i - 1]
-print(dp[n][m])
+v, w, c = [0] * n, [0] * n, [0] * n
+for i in range(n):
+    v[i], w[i], c[i] = map(int, input().split())
+dp = [0] * (m + 1)
+for i in range(n):
+    for j in range(w[i]):
+        lst = []
+        for k in range((m - j) // w[i] + 1)[::-1]:
+            lst.append(dp[j + k * w[i]] - k * v[i])
+        sm = slide_max(lst, c[i] + 1)
+        for k in range((m - j) // w[i] + 1):
+            dp[j + k * w[i]] = sm[-k + (m - j) // w[i]] + k * v[i]
+print(dp[m])
