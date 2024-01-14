@@ -30,7 +30,7 @@ for i in range(n):
         lst = []
         for k in range(q + 1)[::-1]:
             lst.append(dp[j + k * w[i]] - k * v[i])
-        sm = slmax(lst, c[i] + 1)[::-1]
+        sm = slmax(lst, c[i] + 1)
         for k in range(q + 1):
-            dp[j + k * w[i]] = sm[k] + k * v[i]
+            dp[j + k * w[i]] = sm[q - k] + k * v[i]
 print(dp[m])
