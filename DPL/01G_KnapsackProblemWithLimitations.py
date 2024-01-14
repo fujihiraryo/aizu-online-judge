@@ -1,7 +1,7 @@
 from collections import deque
 
 
-def slide_max(a, k):
+def slmax(a, k):
     n = len(a)
     d = deque()
     b = []
@@ -26,10 +26,11 @@ for i in range(n):
 dp = [0] * (m + 1)
 for i in range(n):
     for j in range(w[i]):
+        q = (m - j) // w[i]
         lst = []
-        for k in range((m - j) // w[i] + 1)[::-1]:
+        for k in range(q + 1)[::-1]:
             lst.append(dp[j + k * w[i]] - k * v[i])
-        sm = slide_max(lst, c[i] + 1)
-        for k in range((m - j) // w[i] + 1):
-            dp[j + k * w[i]] = sm[-k + (m - j) // w[i]] + k * v[i]
+        sm = slmax(lst, c[i] + 1)[::-1]
+        for k in range(q + 1):
+            dp[j + k * w[i]] = sm[k] + k * v[i]
 print(dp[m])
