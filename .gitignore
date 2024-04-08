@@ -6,3 +6,5 @@ a.out
 .vscode/*
 .DS_Store
 .python-version
+/.vs/aoj
+*.user
