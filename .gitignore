@@ -8,3 +8,7 @@ a.out
 .python-version
 /.vs/aoj
 *.user
+/x64/Debug
+/aoj/x64/Debug
+/aoj/x64/Release
+/x64/Release
